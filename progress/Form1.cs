@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,14 @@ namespace progress
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private async void SleepButton_Click(object sender, EventArgs e)
+        {
+            var dialog = new ProgressView();
+            dialog.Show();
+            await Task.Run(() => Thread.Sleep(5000));
+            dialog.Close();
         }
     }
 }
